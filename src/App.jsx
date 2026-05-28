@@ -33,7 +33,7 @@ export default function App() {
       return false;
     }
     addIncome(num);
-    enqueueSnackbar(`₹${num.toLocaleString()} added to wallet!`, { variant: 'success' });
+    enqueueSnackbar(`₹${num} added to wallet!`, { variant: 'success' });
     return true;
   };
 
@@ -84,7 +84,7 @@ export default function App() {
           <div className="balance-card">
             <p className="balance-label">
               Wallet Balance:{' '}
-              <span className="balance-amount">₹{walletBalance.toLocaleString()}</span>
+              <span className="balance-amount">₹{walletBalance}</span>
             </p>
             <button
               type="button"
@@ -100,7 +100,7 @@ export default function App() {
           <div className="balance-card">
             <p className="balance-label">
               Expenses:{' '}
-              <span className="expenses-amount">₹{totalExpenses.toLocaleString()}</span>
+              <span className="expenses-amount">₹{totalExpenses}</span>
             </p>
             <button
               type="button"

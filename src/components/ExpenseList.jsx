@@ -30,7 +30,7 @@ export default function ExpenseList({ expenses, onEdit, onDelete }) {
             <div className="expense-title">{expense.title}</div>
             <div className="expense-date">{expense.date}</div>
           </div>
-          <div className="expense-amount">₹{parseFloat(expense.price).toLocaleString()}</div>
+          <div className="expense-amount">₹{parseFloat(expense.price)}</div>
           <div className="expense-actions">
             <button
               className="btn btn-icon btn-icon-red"
