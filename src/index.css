@@ -1,0 +1,537 @@
+/* ============================================
+   EXPENSE TRACKER — Global Styles
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #3a3a3a;
+  --bg-card: #5a5a5a;
+  --bg-card-light: #6b6b6b;
+  --bg-modal: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-dark: #222222;
+  --accent-green: #4caf50;
+  --accent-green-hover: #43a047;
+  --accent-red: #f44336;
+  --accent-red-hover: #e53935;
+  --accent-orange: #f5a623;
+  --accent-orange-hover: #e09615;
+  --accent-yellow: #ffd700;
+  --accent-purple: #a855f7;
+  --color-food: #a855f7;
+  --color-entertainment: #f97316;
+  --color-travel: #eab308;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.4);
+  --radius-card: 16px;
+  --radius-btn: 50px;
+  --radius-modal: 16px;
+  --transition: 0.2s ease;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============================================
+   APP LAYOUT
+   ============================================ */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
+.app-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* ============================================
+   TOP PANEL (wallet + pie chart)
+   ============================================ */
+.top-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.balance-cards {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.balance-card {
+  background: var(--bg-card-light);
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.balance-label {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.balance-amount {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+.expenses-amount {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 22px;
+  border-radius: var(--radius-btn);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #5dcc61, #3db842);
+  color: #fff;
+}
+
+.btn-green:hover {
+  background: linear-gradient(135deg, #66d66a, #44cc49);
+}
+
+.btn-red {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: #fff;
+}
+
+.btn-red:hover {
+  background: linear-gradient(135deg, #f66357, #e33a30);
+}
+
+.btn-orange {
+  background: linear-gradient(135deg, #f5a623, #e09615);
+  color: #fff;
+}
+
+.btn-orange:hover {
+  background: linear-gradient(135deg, #f7b440, #e8a320);
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.btn-cancel:hover {
+  background: #d0d0d0;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+.btn-icon-red {
+  background: var(--accent-red);
+  color: #fff;
+}
+
+.btn-icon-orange {
+  background: var(--accent-orange);
+  color: #fff;
+}
+
+/* ============================================
+   PIE CHART AREA
+   ============================================ */
+.chart-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   BOTTOM SECTION (transactions + bar chart)
+   ============================================ */
+.bottom-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+/* ============================================
+   EXPENSE LIST
+   ============================================ */
+.expense-list-wrapper {
+  min-width: 0;
+}
+
+.expense-list {
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.expense-empty {
+  padding: 24px;
+  color: #888;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background var(--transition);
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-item:hover {
+  background: #f9f9f9;
+}
+
+.expense-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.expense-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.expense-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expense-date {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.expense-amount {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   TOP EXPENSES (BAR CHART)
+   ============================================ */
+.top-expenses-wrapper {
+  min-width: 0;
+}
+
+.top-expenses-card {
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.bar-chart-container {
+  width: 100%;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bar-label {
+  font-size: 0.85rem;
+  color: #555;
+  width: 90px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.bar-track {
+  flex: 1;
+  height: 14px;
+  background: #f0f0f0;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-fill-food {
+  background: var(--color-food);
+}
+
+.bar-fill-entertainment {
+  background: var(--color-entertainment);
+}
+
+.bar-fill-travel {
+  background: var(--color-travel);
+}
+
+/* ============================================
+   MODAL OVERLAY
+   ============================================ */
+.ReactModal__Overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  background: #ffffff;
+  border-radius: var(--radius-modal);
+  padding: 32px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-modal);
+  outline: none;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.25s ease;
+}
+
+.ReactModal__Content--after-open {
+  transform: scale(1) translateY(0);
+}
+
+.ReactModal__Content--before-close {
+  transform: scale(0.9) translateY(20px);
+}
+
+/* ============================================
+   MODAL CONTENT
+   ============================================ */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+  background: #fff;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-input:focus {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
+}
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+select.form-input {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .top-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chart-area {
+    width: 100%;
+    align-items: center;
+  }
+
+  .bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .balance-cards {
+    flex-direction: column;
+  }
+
+  .app {
+    padding: 16px 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ReactModal__Content {
+    padding: 24px 18px;
+    width: 95%;
+  }
+}
